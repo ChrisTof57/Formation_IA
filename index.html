@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formation IA - APF France Handicap</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #00536A 0%, #00a897 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(247, 169, 22, 0.1);
+            border-radius: 50%;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo {
+            max-width: 300px;
+            height: auto;
+            margin-bottom: 30px;
+            filter: brightness(0) invert(1);
+        }
+
+        h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            font-weight: 400;
+            opacity: 0.95;
+            margin-bottom: 10px;
+        }
+
+        /* Badge informations */
+        .info-badges {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .badge-icon {
+            font-size: 1.2em;
+        }
+
+        /* Section générale */
+        section {
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2em;
+            color: #00536A;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        /* Bannière illustration */
+        .hero-banner {
+            background: linear-gradient(135deg, rgba(0, 83, 106, 0.05) 0%, rgba(0, 168, 151, 0.05) 100%);
+            padding: 40px;
+            border-radius: 20px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .hero-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+        }
+
+        /* Programme accordéon */
+        .accordion {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .accordion-item {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .accordion-item:hover {
+            border-color: #00536A;
+            box-shadow: 0 4px 12px rgba(0, 83, 106, 0.1);
+        }
+
+        .accordion-header {
+            background: linear-gradient(135deg, #00536A 0%, #00a897 100%);
+            color: white;
+            padding: 20px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+
+        .accordion-icon {
+            font-size: 1.5em;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 1000px;
+        }
+
+        .accordion-body {
+            padding: 25px;
+            line-height: 1.8;
+        }
+
+        .accordion-body strong {
+            color: #00536A;
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+
+        .accordion-body ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .accordion-body li {
+            margin-bottom: 8px;
+        }
+
+        /* Téléchargements */
+        .download-section {
+            background: linear-gradient(135deg, #F7A916 0%, #ec6906 100%);
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .download-section .section-title {
+            color: white;
+        }
+
+        .download-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .btn-download {
+            background: white;
+            color: #00536A;
+            padding: 18px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-download:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Carte */
+        .map-section {
+            background: #f8f9fa;
+        }
+
+        .map-container {
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+        }
+
+        .location-info {
+            background: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .location-info h3 {
+            font-family: 'Poppins', sans-serif;
+            color: #00536A;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .location-info p {
+            font-size: 1.1em;
+            color: #666;
+        }
+
+        /* Contact */
+        .contact-section {
+            background: white;
+            text-align: center;
+        }
+
+        .contact-card {
+            max-width: 600px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #00536A 0%, #00a897 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 83, 106, 0.2);
+        }
+
+        .contact-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            font-size: 1.1em;
+            line-height: 2;
+        }
+
+        .contact-info a {
+            color: #F7A916;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: #00536A;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        footer p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        footer a {
+            color: #F7A916;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .subtitle {
+                font-size: 1.1em;
+            }
+
+            .info-badges {
+                flex-direction: column;
+            }
+
+            .section-title {
+                font-size: 1.6em;
+            }
+
+            .download-buttons {
+                flex-direction: column;
+            }
+
+            .accordion-header {
+                font-size: 1em;
+                padding: 15px 20px;
+            }
+        }
+
+        /* Accessibilité */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #00536A;
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Animation d'apparition */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main" class="skip-link">Aller au contenu principal</a>
+
+    <header>
+        <div class="header-content container">
+            <img src="logo.png" alt="APF France Handicap - Risquer l'impossible" class="logo fade-in">
+            <h1 class="fade-in">Découvrir l'intelligence artificielle au quotidien, sans stress ni risque</h1>
+            <p class="subtitle fade-in">Parcours de sensibilisation à l'IA - Format court ESMS</p>
+            
+            <div class="info-badges fade-in">
+                <div class="badge">
+                    <span class="badge-icon">📅</span>
+                    <span>29 janvier 2026</span>
+                </div>
+                <div class="badge">
+                    <span class="badge-icon">⏰</span>
+                    <span>9h00 - 17h00</span>
+                </div>
+                <div class="badge">
+                    <span class="badge-icon">⏱️</span>
+                    <span>Durée : 1h30</span>
+                </div>
+                <div class="badge">
+                    <span class="badge-icon">👥</span>
+                    <span>6 à 12 personnes</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main">
+        <!-- Bannière illustration -->
+        <section class="hero-banner container">
+            <div style="background: linear-gradient(135deg, rgba(0, 168, 151, 0.1) 0%, rgba(247, 169, 22, 0.1) 100%); padding: 60px 40px; border-radius: 15px;">
+                <div style="font-size: 5em; margin-bottom: 20px;">🤖💡🤝</div>
+                <h2 style="font-family: 'Poppins', sans-serif; color: #00536A; font-size: 2em; margin-bottom: 15px;">Une formation pensée pour vous</h2>
+                <p style="font-size: 1.2em; color: #666; max-width: 800px; margin: 0 auto;">Une approche rassurante, concrète et accessible de l'intelligence artificielle, spécifiquement adaptée aux réalités du secteur médico-social et du monde du handicap.</p>
+            </div>
+        </section>
+
+        <!-- À propos -->
+        <section style="background: white; padding: 60px 20px;">
+            <div class="container">
+                <h2 class="section-title">À qui s'adresse cette formation ?</h2>
+                <div style="max-width: 800px; margin: 0 auto; background: #f8f9fa; padding: 40px; border-radius: 15px; border-left: 5px solid #F7A916;">
+                    <p style="font-size: 1.1em; line-height: 1.8; margin-bottom: 20px;">
+                        <strong style="color: #00536A; font-size: 1.2em;">Personnel administratif et professionnels ESMS</strong>
+                    </p>
+                    <p style="font-size: 1.05em; line-height: 1.8; margin-bottom: 15px;">Ce parcours s'adresse à des professionnels :</p>
+                    <ul style="margin-left: 30px; font-size: 1.05em; line-height: 2;">
+                        <li>Peu ou pas à l'aise avec le numérique</li>
+                        <li>N'ayant jamais utilisé l'IA</li>
+                        <li>Disposant de peu de temps</li>
+                        <li>Soucieux de préserver la relation humaine avec les usagers</li>
+                    </ul>
+                    <p style="font-size: 1.05em; margin-top: 20px; padding: 15px; background: white; border-radius: 10px;">
+                        <strong style="color: #00a897;">✓ Aucun prérequis technique ou théorique n'est attendu</strong>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Programme -->
+        <section style="background: #f8f9fa; padding: 60px 20px;">
+            <div class="container">
+                <h2 class="section-title">Programme de la formation</h2>
+                
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span>📍 Séquence 1 : Démystifier l'IA (15 min)</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <strong>Objectif :</strong> Rassurer, lever les peurs et casser les idées reçues
+                                
+                                <strong>Ce que l'IA n'est pas :</strong>
+                                <ul>
+                                    <li>Ce n'est pas un humain</li>
+                                    <li>Ce n'est pas autonome</li>
+                                    <li>Ce n'est pas infaillible</li>
+                                </ul>
+                                
+                                <strong>Ce que l'IA est réellement :</strong>
+                                <ul>
+                                    <li>Un outil d'aide</li>
+                                    <li>Qui propose des contenus</li>
+                                    <li>Sous le contrôle permanent de l'humain</li>
+                                </ul>
+                                
+                                <strong>Méthodes :</strong> Échange oral collectif guidé, reformulation, exemples concrets
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span>🏥 Séquence 2 : L'IA dans la réalité ESMS (20 min)</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <strong>Objectif :</strong> Donner du sens et créer un lien avec le métier
+                                
+                                <strong>Exemples concrets :</strong>
+                                <ul>
+                                    <li>Reformuler un mail administratif trop long ou trop complexe</li>
+                                    <li>Résumer un document ou une note interne</li>
+                                    <li>Simplifier un message destiné à un usager ou à une famille</li>
+                                </ul>
+                                
+                                <p>L'accent est mis sur des usages à faible risque, à fort gain de confort, sans remise en cause du rôle professionnel.</p>
+                                
+                                <strong>Méthodes :</strong> Démonstration commentée, interaction orale libre
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span>🚦 Séquence 3 : Ce que l'on peut/ne peut pas faire (15 min)</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <strong>Objectif :</strong> Sécuriser les pratiques et rassurer sur le cadre
+                                
+                                <strong>Règles essentielles :</strong>
+                                <ul>
+                                    <li>Ne jamais transmettre de données personnelles ou sensibles</li>
+                                    <li>Ne pas utiliser l'IA pour prendre des décisions importantes</li>
+                                    <li>Toujours relire, vérifier et garder la responsabilité humaine</li>
+                                </ul>
+                                
+                                <strong>Outil :</strong> Support visuel "feu vert / feu rouge" avec exemples concrets
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span>✨ Séquence 4 : Première utilisation sans risque (25 min)</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <strong>Objectif :</strong> Vivre un premier contact positif et maîtrisé
+                                
+                                <strong>Principe :</strong>
+                                <ul>
+                                    <li>Les participants proposent des idées de demandes</li>
+                                    <li>Le formateur saisit et montre les résultats</li>
+                                </ul>
+                                
+                                <strong>Exemples de demandes :</strong>
+                                <ul>
+                                    <li>"Reformule ce texte avec des mots simples"</li>
+                                    <li>"Fais un résumé clair en 5 lignes"</li>
+                                    <li>"Explique ce message de manière plus accessible"</li>
+                                </ul>
+                                
+                                <p><strong>Adaptations :</strong> Participation orale facultative, aucun écrit imposé, rythme volontairement lent</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span>🎯 Séquence 5 : Projection dans le quotidien (15 min)</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <strong>Objectif :</strong> Préparer l'après-sensibilisation
+                                
+                                <strong>Questions guidées :</strong>
+                                <ul>
+                                    <li>Sur quelle tâche précise cela pourrait m'aider ?</li>
+                                    <li>Dans quelles situations je ne dois pas utiliser l'IA ?</li>
+                                    <li>Quel serait un premier petit usage acceptable pour moi ?</li>
+                                </ul>
+                                
+                                <strong>Livrable :</strong> Fiche A4 synthèse comprenant usages possibles, usages interdits, exemples de phrases simples
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="max-width: 800px; margin: 40px auto; background: white; padding: 30px; border-radius: 15px; border: 2px solid #00a897; text-align: center;">
+                    <p style="font-size: 1.3em; color: #00536A; font-weight: 600; line-height: 1.6;">
+                        💡 Message clé : L'intelligence artificielle est un outil au service de votre métier. Elle peut vous aider, mais vous restez toujours décisionnaire à chaque étape.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Accessibilité -->
+        <section style="background: white; padding: 60px 20px;">
+            <div class="container">
+                <h2 class="section-title">Accessibilité et inclusion</h2>
+                <div style="max-width: 900px; margin: 0 auto;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                        <div style="background: linear-gradient(135deg, #00536A 0%, #00a897 100%); color: white; padding: 25px; border-radius: 15px; text-align: center;">
+                            <div style="font-size: 2.5em; margin-bottom: 10px;">📝</div>
+                            <strong>Aucun écrit obligatoire</strong>
+                        </div>
+                        <div style="background: linear-gradient(135deg, #00a897 0%, #F7A916 100%); color: white; padding: 25px; border-radius: 15px; text-align: center;">
+                            <div style="font-size: 2.5em; margin-bottom: 10px;">👁️</div>
+                            <strong>Supports visuels lisibles et épurés</strong>
+                        </div>
+                        <div style="background: linear-gradient(135deg, #F7A916 0%, #ec6906 100%); color: white; padding: 25px; border-radius: 15px; text-align: center;">
+                            <div style="font-size: 2.5em; margin-bottom: 10px;">💬</div>
+                            <strong>Langage simple et accessible</strong>
+                        </div>
+                        <div style="background: linear-gradient(135deg, #ec6906 0%, #d54d77 100%); color: white; padding: 25px; border-radius: 15px; text-align: center;">
+                            <div style="font-size: 2.5em; margin-bottom: 10px;">♿</div>
+                            <strong>Compatible PMR et DYS</strong>
+                        </div>
+                    </div>
+                    <p style="text-align: center; margin-top: 30px; font-size: 1.1em; color: #666; font-style: italic;">
+                        L'ensemble du parcours est conçu pour éviter toute mise en situation de handicap.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Téléchargements -->
+        <section class="download-section">
+            <div class="container">
+                <h2 class="section-title">Documents à télécharger</h2>
+                <div class="download-buttons">
+                    <a href="programme.pdf" class="btn-download" download>
+                        <span style="font-size: 1.5em;">📄</span>
+                        <span>Programme complet (PDF)</span>
+                    </a>
+                    <a href="livret-stagiaire.pdf" class="btn-download" download>
+                        <span style="font-size: 1.5em;">📋</span>
+                        <span>Livret stagiaire (PDF)</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Carte -->
+        <section class="map-section">
+            <div class="container">
+                <h2 class="section-title">Lieu de formation</h2>
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2635.8!2d6.1785!3d49.1193!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4794e2f3b3b3b3b3%3A0x3b3b3b3b3b3b3b3b!2s3%20Boulevard%20de%20Tr%C3%A8ves%2C%2057070%20Metz!5e0!3m2!1sfr!2sfr!4v1234567890"
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Carte de localisation de la formation">
+                    </iframe>
+                    <div class="location-info">
+                        <h3>📍 Adresse</h3>
+                        <p><strong>3 boulevard de Trèves</strong></p>
+                        <p>57070 Metz</p>
+                        <p style="margin-top: 15px; color: #00536A;"><strong>29 janvier 2026 • 9h00 - 17h00</strong></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section class="contact-section">
+            <div class="container">
+                <h2 class="section-title">Contact formateur</h2>
+                <div class="contact-card">
+                    <h3>Christophe Zimmermann</h3>
+                    <div class="contact-info">
+                        <p>📧 <a href="mailto:christophe.zimmermann@apf.asso.fr">christophe.zimmermann@apf.asso.fr</a></p>
+                        <p style="margin-top: 20px;">Pour toute question concernant cette formation, n'hésitez pas à me contacter.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p><strong>APF France Handicap</strong> est une association de personnes en situation de handicap, qui réunit celles-ci, leurs familles et des personnes valides solidaires.</p>
+            <p>Depuis 90 ans, elle est engagée dans la défense des droits des personnes handicapées et de leurs familles, se bat contre les discriminations et les préjugés dont elles sont victimes.</p>
+            <p style="margin-top: 20px;">
+                <a href="https://www.apf-francehandicap.org/" target="_blank" rel="noopener noreferrer">🌐 Politique d'inclusion et de gestion du handicap</a>
+            </p>
+            <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.8;">
+                © 2026 APF France Handicap - Tous droits réservés
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Accordéon
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const wasActive = item.classList.contains('active');
+                
+                // Fermer tous les items
+                document.querySelectorAll('.accordion-item').forEach(i => {
+                    i.classList.remove('active');
+                });
+                
+                // Ouvrir l'item cliqué si il n'était pas déjà ouvert
+                if (!wasActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Ouvrir le premier item par défaut
+        document.querySelector('.accordion-item').classList.add('active');
+    </script>
+</body>
+</html>
